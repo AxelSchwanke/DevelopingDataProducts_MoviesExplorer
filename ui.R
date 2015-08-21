@@ -9,51 +9,51 @@ rMin <- min(movies$rating)
 rMax <- max(movies$rating)
 
 lMin <- min(movies$length)
-lMax <- max(movies$length)
 lMax <- 500
-
-
+            
 shinyUI(pageWithSidebar(
-
   headerPanel("Movies Explorer"),
-
+  
   sidebarPanel(
-    
-    sliderInput("years", "Release Date [Year]:",
-                  min = yearMin, max = yearMax, 
-                  value = c(yearMin,yearMax), 
-                  step=1, format="####"),
-    
-    # The `format` argument to sliderInput is deprecated. 
-    # Use `sep`, `pre`, and `post` instead. (Last used in version 0.10.2.2)
-    
+    sliderInput(
+      "years", label = "Release Date [Year]:",
+      min = yearMin, max = yearMax,
+      value = c(1880,2000),
+      step = 1
+    ),
 
-    sliderInput("lengths", "Movies Length [min]:",
-                  min = lMin, max = lMax, 
-                  value = c(lMin,lMax), step=1, format="####"),
-                  
-    sliderInput("ratings", "Rating [1=Low  10=High]:",
-                  min = rMin, max = rMax, value = c(rMin,rMax) ),
-
-    checkboxGroupInput("genres", "Genres:",
-                       c("action" = "Action",
-                         "animation" = "Animation",
-                         "comedy" = "Comedy",
-                         "drama" = "Drama",
-                         "documentary", "Documentary",
-                         "romance" = "Romance",
-                         "short" = "Short"
-                       ), selected="action"
-                       ),
+    sliderInput(
+      "lengths", label = "Movies Length [min]:",
+      min = lMin, max = lMax,
+      value = c(lMin,lMax), step = 1
+    ),
     
-    sliderInput("poly", "Degree of polynomial regression:",
-                  min = 1, max = 10, 
-                  value = 1,
-                  step=1)
-
+    sliderInput(
+      "ratings", label = "Rating [1=Low  10=High]:",
+      min = rMin, max = rMax, value = c(rMin,rMax)
+    ),
+    
+    checkboxGroupInput(
+      "genres", "Genres:",
+      c(
+        "Action" = "action",
+        "Animation" = "animation",
+        "Comedy" = "comedy",
+        "Drama" = "drama",
+        "Documentary" = "documentary",
+        "Romance" = "romance",
+        "Short" = "short"
+      ), selected = "action"
+    ),
+    
+    sliderInput(
+      "poly", "Degree of polynomial regression:",
+      min = 1, max = 7,
+      value = 1,
+      step = 1
+    )
+    
   ),
-
-  mainPanel(
-    plotOutput('plot')
-  )
+  
+  mainPanel(plotOutput('plot'))
 ))
