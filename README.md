@@ -6,7 +6,7 @@ It is one of the largest searchable movie database on the web and is
 run by amazon.
 
 The Movies Explorer illustrates the development of movie budgets
-between the years 1883 and 2005. 
+between the years 1900 and 2005. 
 The plot shows the development of the mean movie budget of 
 all selected movies within the specified range of years.
 

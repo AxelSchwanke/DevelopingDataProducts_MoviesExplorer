@@ -2,7 +2,7 @@ require(shiny)
 require(ggplot2)
 
 dataset <- na.omit(movies)
-yearMin <- min(movies$year)
+yearMin <- 1900
 yearMax <- max(movies$year)
 
 rMin <- min(movies$rating)
@@ -15,22 +15,20 @@ shinyUI(pageWithSidebar(
   headerPanel("Movies Explorer"),
   
   sidebarPanel(
+    
     sliderInput(
       "years", label = "Release Date [Year]:",
-      min = yearMin, max = yearMax,
-      value = c(1880,2000),
-      step = 1
+      min = yearMin, max = yearMax, value = c(yearMin,yearMax), step = 1
     ),
 
     sliderInput(
       "lengths", label = "Movies Length [min]:",
-      min = lMin, max = lMax,
-      value = c(lMin,lMax), step = 1
+      min = lMin, max = lMax, value = c(lMin,lMax), step = 1
     ),
     
     sliderInput(
       "ratings", label = "Rating [1=Low  10=High]:",
-      min = rMin, max = rMax, value = c(rMin,rMax)
+      min = rMin, max = rMax, value = c(rMin,rMax), step = 1
     ),
     
     checkboxGroupInput(
@@ -48,12 +46,12 @@ shinyUI(pageWithSidebar(
     
     sliderInput(
       "poly", "Degree of polynomial regression:",
-      min = 1, max = 7,
-      value = 1,
-      step = 1
+      min = 1, max = 7, value = 3, step = 1
     )
     
   ),
   
-  mainPanel(plotOutput('plot'))
+  mainPanel(
+    plotOutput('plot')
+  )
 ))
