@@ -20,3 +20,11 @@ regression line
 
 The 'Budget of Movies' is automatically re-evaluted when the 
 different sliders and checkboxes are changed.
+
+----
+
+Find interactive Movies Explorer on Rstudio's shiny server
+https://axelschwanke.shinyapps.io/MoviesExplorer
+
+Find RStudio Presentation on RPubs
+http://rpubs.com/schwanke/102279
